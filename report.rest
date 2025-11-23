@@ -1,0 +1,33 @@
+### CREATE a report (admin only)
+POST http://localhost:3000/reports
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjEsInVzZXJuYW1lIjoiY29ycHNMZWFkZXIiLCJyb2xlIjoiYWRtaW4iLCJwcm9maWxlIjpbeyJuYW1lIjoiS2FnYXlhIFVidXlhc2hpa2kiLCJyYW5rIjoiQ29ycHMgTGVhZGVyIiwiZXhwZXJpZW5jZSI6NTAwMCwiYnJlYXRoaW5nU3R5bGUiOiJOb25lIiwia2lsbENvdW50IjoxMDAwLCJtaXNzaW9uc0NvbXBsZXRlZCI6MTAwLCJzdGF0dXMiOiJBY3RpdmUiLCJfaWQiOiI2OGJkYjkzODEzZTdkMjI4ZDJkYjQwNTcifV0sImlhdCI6MTc1NzI2NDM0M30.sYQyEuNr-qMSuVhiTmiyRSAdnJM8uzUq94ls5U3IJd4
+Content-Type: application/json
+
+{
+  "reportTitle": "Demon Spotted in Mt. Natagumo",
+  "userID": 2,
+  "content": "A NEW powerful demon has been identified and seen near Mt. Natagumo.",
+  "status": "newReport",
+  "notes": "Demon was seen using fire spells.",
+  "result": "Success"
+}
+
+### GET all reports (public)
+GET http://localhost:3000/reports
+
+### GET a report by ID
+GET http://localhost:3000/reports/r1
+
+### UPDATE a report by ID (user or admin)
+PATCH http://localhost:3000/reports/r1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjIsInVzZXJuYW1lIjoiaGltZWppbWEiLCJyb2xlIjoidXNlciIsInByb2ZpbGUiOlt7Im5hbWUiOiJHeW9tZWkgSGltZWppbWEiLCJyYW5rIjoiSGFzaGlyYSAtIEVsaXRlIiwiZXhwZXJpZW5jZSI6NDAwMCwiYnJlYXRoaW5nU3R5bGUiOiJTdG9uZSBCcmVhdGhpbmciLCJraWxsQ291bnQiOjkwMCwibWlzc2lvbnNDb21wbGV0ZWQiOjkwLCJzdGF0dXMiOiJBY3RpdmUiLCJfaWQiOiI2OGJkNzVhY2VmMTk5ZmE5M2NiNjZjZDkifV0sImlhdCI6MTc1NzI0OTIyN30.Laao10eQhBslUEQKTFhyBiEgzsznZSmTjzNQHstoF7w
+Content-Type: application/json
+
+{
+  "status": "missionUpdate",
+  "content": "The threat has been eliminated by the Hashira."
+}
+
+### DELETE a report by ID (admin only)
+DELETE http://localhost:3000/reports/r1
+Authorization: Bearer {{ADMIN_TOKEN}}

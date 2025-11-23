@@ -1,0 +1,64 @@
+### Create Demon - Kibutsuji Muzan
+POST http://localhost:10000/demons
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjEsInVzZXJuYW1lIjoiY29ycHNMZWFkZXIiLCJyb2xlIjoiYWRtaW4iLCJwcm9maWxlIjpbeyJuYW1lIjoiS2FnYXlhIFVidXlhc2hpa2kiLCJyYW5rIjoiQ29ycHMgTGVhZGVyIiwiZXhwZXJpZW5jZSI6NTAwMCwiYnJlYXRoaW5nU3R5bGUiOiJOb25lIiwia2lsbENvdW50IjoxMDAwLCJtaXNzaW9uc0NvbXBsZXRlZCI6MTAwLCJzdGF0dXMiOiJBY3RpdmUiLCJfaWQiOiI2OGJkYjkzODEzZTdkMjI4ZDJkYjQwNTcifV0sImlhdCI6MTc1NzMxOTY4OH0.pjxQDDYtH656gA9sgq3hD7S18MTUjMSdIEvLcpp7USA
+
+{
+  "name": "Kibutsuji Muzan",
+  "type": "Demon",
+  "rank": "Demon-King",
+  "status": "Alive",
+  "powerLevel": 10000000
+}
+
+### Create Demon - Kokushibo
+POST http://localhost:10000/demons
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjEsInVzZXJuYW1lIjoiY29ycHNMZWFkZXIiLCJyb2xlIjoiYWRtaW4iLCJwcm9maWxlIjpbeyJuYW1lIjoiS2FnYXlhIFVidXlhc2hpa2kiLCJyYW5rIjoiQ29ycHMgTGVhZGVyIiwiZXhwZXJpZW5jZSI6NTAwMCwiYnJlYXRoaW5nU3R5bGUiOiJOb25lIiwia2lsbENvdW50IjoxMDAwLCJtaXNzaW9uc0NvbXBsZXRlZCI6MTAwLCJzdGF0dXMiOiJBY3RpdmUiLCJfaWQiOiI2OGJkYjkzODEzZTdkMjI4ZDJkYjQwNTcifV0sImlhdCI6MTc1NzMxOTY4OH0.pjxQDDYtH656gA9sgq3hD7S18MTUjMSdIEvLcpp7USA
+
+{
+  "name": "Kokushibo",
+  "type": "Demon",
+  "rank": "Upper-Moon",
+  "status": "Alive",
+  "powerLevel": 912000
+}
+
+### Create Demon - Doma
+POST http://localhost:3000/demons
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjEsInVzZXJuYW1lIjoiY29ycHNMZWFkZXIiLCJyb2xlIjoiYWRtaW4iLCJwcm9maWxlIjpbeyJuYW1lIjoiS2FnYXlhIFVidXlhc2hpa2kiLCJyYW5rIjoiQ29ycHMgTGVhZGVyIiwiZXhwZXJpZW5jZSI6NTAwMCwiYnJlYXRoaW5nU3R5bGUiOiJOb25lIiwia2lsbENvdW50IjoxMDAwLCJtaXNzaW9uc0NvbXBsZXRlZCI6MTAwLCJzdGF0dXMiOiJBY3RpdmUiLCJfaWQiOiI2OGJkYjkzODEzZTdkMjI4ZDJkYjQwNTcifV0sImlhdCI6MTc1NzI2NDM0M30.sYQyEuNr-qMSuVhiTmiyRSAdnJM8uzUq94ls5U3IJd4
+Content-Type: application/json
+
+{
+  "name": "Doma",
+  "type": "Demon",
+  "rank": "Upper-Moon",
+  "status": "Alive"
+}
+
+### Get All Demons
+GET http://localhost:10000/demons
+
+### Get Demon by ID (replace :id with actual demonID, e.g., d1)
+GET http://localhost:3000/demons/d1
+
+### Update Demon by ID (replace :id)
+PATCH http://localhost:3000/demons/d1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjEsInVzZXJuYW1lIjoiY29ycHNMZWFkZXIiLCJyb2xlIjoiYWRtaW4iLCJwcm9maWxlIjpbeyJuYW1lIjoiS2FnYXlhIFVidXlhc2hpa2kiLCJyYW5rIjoiQ29ycHMgTGVhZGVyIiwiZXhwZXJpZW5jZSI6NTAwMCwiYnJlYXRoaW5nU3R5bGUiOiJOb25lIiwia2lsbENvdW50IjoxMDAwLCJtaXNzaW9uc0NvbXBsZXRlZCI6MTAwLCJzdGF0dXMiOiJBY3RpdmUiLCJfaWQiOiI2OGJkNzVhOGVmMTk5ZmE5M2NiNjZjZDQifV0sImlhdCI6MTc1NzI0NzI5N30.It-c6HrdfhjKD-6GsJiWTW0UmH7HQ45PbR6E7CfwTGo
+
+
+{
+  "status": "Alive"
+}
+
+### Update Demon by ID (replace :id)
+PATCH http://localhost:3000/demons/d1
+Content-Type: application/json
+
+{
+  "status": "Alive"
+}
+
+### Delete Demon by ID (replace :id)
+DELETE http://localhost:3000/demons/d2

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>freelancer-corps-api Documentation</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #fafafa; color: #222; }
+    h1, h2, h3 { color: #b30000; }
+    pre { background: #eee; padding: 10px; border-radius: 6px; overflow-x: auto; }
+    .endpoint { margin-bottom: 40px; }
+    .tag { display: inline-block; padding: 4px 8px; background: #b30000; color: #fff; border-radius: 4px; font-size: 12px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { border: 1px solid #ccc; padding: 8px; }
+    th { background: #ddd; }
+    code { color: #b30000; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>freelancer-corps-api Documentation</h1>
+  <p>The <strong>Freelancer Corps API</strong> is a Demon Slayer–themed freelancing job portal backend. It powers a full‑stack system where <strong>Slayers</strong> (freelancers) take on missions posted by an <strong>Admin</strong>, battling demons, gaining experience, and ranking up based on completed work.</p>
+
+<p>This API manages users, demons, missions, reports, authentication, and rankings. Slayers can browse missions, accept those within their rank, and submit mission reports. Admins create missions, register demons, and oversee corps operations. All authentication uses <strong>JWT</strong> and passwords are secured using <strong>bcrypt</strong>.</p>
+
+<p>Missions are themed after Demon Slayer lore. Each mission targets a specific demon, and every demon has its own rank and power level. Missions also grant <strong>EXP rewards</strong>, allowing Slayers to advance their professional rank, proving their reliability based on past performance.</p>
+
+<p><strong>User Roles:</strong></p>
+<ul>
+  <li><strong>Admin</strong> – Can create, update, and manage missions and demons. Has elevated permissions.</li>
+  <li><strong>Slayer</strong> – A freelancer who accepts missions, submits reports, and grows through ranking and experience.</li>
+</ul>
+
+<p><strong>Slayer Ranks:</strong></p>
+<ul>
+  <li>Mizunoto – Novice</li>
+  <li>Tsuchinoe – Mid Rank</li>
+  <li>Hashira – Elite</li>
+</ul>
+
+<p>Slayers can only take missions that match their difficulty level and rank. Demon power levels help Slayers determine whether they can handle specific missions. After completing or failing a mission, Slayers must submit a <strong>mission report</strong>, enabling transparent tracking of their performance.</p>
+
+<p>This API is fully structured with RESTful design principles and serves as the backend for the future Freelancer Corps full‑stack application.</p>
+
+  <h2>Base URL</h2>
+  <pre>http://localhost:10000/</pre>
+
+  <h2>Authentication</h2>
+  <h3>Test Login Accounts</h3>
+  <pre>{
+  "admin": {
+    "username": "corpsLeader",
+    "password": "admin123"
+  },
+  "slayer": {
+    "username": "rengoku",
+    "password": "hashira123"
+  }
+}</pre>
+  <div class="endpoint">
+    <h3><span class="tag">POST</span> /auth/login</h3>
+    <p>Logs in a user and returns a JWT token.</p>
+    <h4>Request Body</h4>
+    <pre>{
+  "email": "string",
+  "password": "string"
+}</pre>
+    <h4>Response</h4>
+    <pre>{
+  "message": "Login successful",
+  "token": "<JWT_TOKEN>",
+  "user": { "_id": "string", "email": "string", "role": "admin | slayer" }
+}</pre>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">GET</span> /auth/admin</h3>
+    <p>Admin protected route.</p>
+    <h4>Response</h4>
+    <pre>{ "message": "Welcome Admin", "user": { ... } }</pre>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">GET</span> /auth/user</h3>
+    <p>Slayer protected route.</p>
+    <h4>Response</h4>
+    <pre>{ "message": "Welcome User", "user": { ... } }</pre>
+  </div>
+
+  <h2>Demons</h2>
+  <div class="endpoint">
+    <h3><span class="tag">POST</span> /demons</h3>
+    <p>Create a new demon (Admin only).</p>
+    <h4>Request Body</h4>
+    <pre>{
+  "name": "Akaza",
+  "rank": "Upper Moon 3",
+  "powerLevel": 9500
+}</pre>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">GET</span> /demons</h3>
+    <p>Fetch all demons.</p>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">GET</span> /demons/:demonID</h3>
+    <p>Fetch demon by ID.</p>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">PATCH</span> /demons/:demonID</h3>
+    <p>Update demon (Admin only).</p>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">DELETE</span> /demons/:demonID</h3>
+    <p>Delete demon (Admin only).</p>
+  </div>
+
+  <h2>Missions</h2>
+  <div class="endpoint">
+    <h3><span class="tag">POST</span> /missions</h3>
+    <p>Create mission (Admin only).</p>
+    <pre>{
+  "title": "Eliminate the Swamp Demon",
+  "difficulty": "Mid",
+  "expReward": 300,
+  "assignedTo": "slayerUserID",
+  "demonID": "demonID"
+}</pre>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">GET</span> /missions</h3>
+    <p>Fetch all missions.</p>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">GET</span> /missions/:missionID</h3>
+    <p>Fetch mission by ID.</p>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">PATCH</span> /missions/:missionID</h3>
+    <p>Update mission (Slayer only).</p>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">DELETE</span> /missions/:missionID</h3>
+    <p>Delete mission (Admin only).</p>
+  </div>
+
+  <h2>Reports</h2>
+  <div class="endpoint">
+    <h3><span class="tag">POST</span> /reports</h3>
+    <p>Create report (Admin only).</p>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">GET</span> /reports</h3>
+    <p>Fetch all reports.</p>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">GET</span> /reports/:reportID</h3>
+    <p>Fetch report by ID.</p>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">PATCH</span> /reports/:reportID</h3>
+    <p>Update report (Slayer only).</p>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">DELETE</span> /reports/:reportID</h3>
+    <p>Delete report (Admin only).</p>
+  </div>
+
+  <h2>Users</h2>
+  <div class="endpoint">
+    <h3><span class="tag">POST</span> /users/register</h3>
+    <p>Create a new user.</p>
+    <pre>{
+  "email": "string",
+  "password": "string",
+  "role": "admin | slayer"
+}</pre>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">GET</span> /users</h3>
+    <p>Fetch all users (Admin only).</p>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">GET</span> /users/profile</h3>
+    <p>Fetch all profiles.</p>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">GET</span> /users/:userID</h3>
+    <p>Fetch user by ID (Admin only).</p>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">GET</span> /users/:userID/profile</h3>
+    <p>Fetch single user profile.</p>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">PATCH</span> /users/:userID/profile</h3>
+    <p>Update profile (Slayer only).</p>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">DELETE</span> /users/:userID</h3>
+    <p>Delete user (Admin only).</p>
+  </div>
+
+  <div class="endpoint">
+    <h3><span class="tag">GET</span> /users/:userID/missions</h3>
+    <p>Get user missions.</p>
+  </div>
+
+</body>
+</html>

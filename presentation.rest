@@ -1,0 +1,149 @@
+### Create user: tanjiro
+POST https://dsc-managementsystem.onrender.com/users/register
+Content-Type: application/json
+
+{
+  "username": "tanjiro",
+  "password": "user123",
+  "profile": [
+    {
+      "name": "Tanjiro Kamado",
+      "rank": "Tsuchinoe - Mid Rank",
+      "experience": 12000,
+      "breathingStyle": "Water Breathing",
+      "killCount": 25,
+      "missionsCompleted": 30,
+      "status": "Active"
+    }
+  ]
+}
+
+### Create user: zenitsu
+POST https://dsc-managementsystem.onrender.com/users/register
+Content-Type: application/json
+
+{
+  "username": "zenitsu",
+  "password": "thunder123",
+  "role": "user",
+  "profile": [
+    {
+      "name": "Zenitsu Agatsuma",
+      "rank": "Demon Slayer",
+      "experience": 9500,
+      "breathingStyle": "Thunder Breathing",
+      "killCount": 18,
+      "missionsCompleted": 24,
+      "status": "Active"
+    }
+  ]
+}
+
+### Login as admin
+POST https://dsc-managementsystem.onrender.com/auth/login
+Content-Type: application/json
+
+{
+  "username": "corpsLeader",
+  "password": "admin123"
+}
+
+### Login as tanjiro
+POST https://dsc-managementsystem.onrender.com/auth/login
+Content-Type: application/json
+
+{
+  "username": "himejima",
+  "password": "hashira1"
+}
+
+### update data
+PATCH https://dsc-managementsystem.onrender.com/users/3/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjEsInVzZXJuYW1lIjoiY29ycHNMZWFkZXIiLCJyb2xlIjoiYWRtaW4iLCJwcm9maWxlIjpbeyJuYW1lIjoiS2FnYXlhIFVidXlhc2hpa2kiLCJyYW5rIjoiQ29ycHMgTGVhZGVyIiwiZXhwZXJpZW5jZSI6NTAwMCwiYnJlYXRoaW5nU3R5bGUiOiJOb25lIiwia2lsbENvdW50IjoxMDAwLCJtaXNzaW9uc0NvbXBsZXRlZCI6MTAwLCJzdGF0dXMiOiJBY3RpdmUiLCJfaWQiOiI2OGJkYjkzODEzZTdkMjI4ZDJkYjQwNTcifV0sImlhdCI6MTc1NzMzNDk2MX0.Fbs1Qarh1eNFu3kTxOC0ITMW22SGP-7IAdIaSXSyjGs
+Content-Type: application/json
+
+{
+  "experience": 10
+}
+
+### Create a new demon
+POST https://dsc-managementsystem.onrender.com/demons
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjEsInVzZXJuYW1lIjoiY29ycHNMZWFkZXIiLCJyb2xlIjoiYWRtaW4iLCJwcm9maWxlIjpbeyJuYW1lIjoiS2FnYXlhIFVidXlhc2hpa2kiLCJyYW5rIjoiQ29ycHMgTGVhZGVyIiwiZXhwZXJpZW5jZSI6NTAwMCwiYnJlYXRoaW5nU3R5bGUiOiJOb25lIiwia2lsbENvdW50IjoxMDAwLCJtaXNzaW9uc0NvbXBsZXRlZCI6MTAwLCJzdGF0dXMiOiJBY3RpdmUiLCJfaWQiOiI2OGJkYjkzODEzZTdkMjI4ZDJkYjQwNTcifV0sImlhdCI6MTc1NzMzNDk2MX0.Fbs1Qarh1eNFu3kTxOC0ITMW22SGP-7IAdIaSXSyjGs
+
+{
+  "name": "Rui",
+  "type": "Demon",
+  "rank": "Lower-Moon",
+  "status": "Alive",
+  "powerLevel": 370210
+}
+
+### Get All Demons
+GET https://dsc-managementsystem.onrender.com/demons
+
+### Update Demon by ID
+PATCH https://dsc-managementsystem.onrender.com/demons/d4
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjEsInVzZXJuYW1lIjoiY29ycHNMZWFkZXIiLCJyb2xlIjoiYWRtaW4iLCJwcm9maWxlIjpbeyJuYW1lIjoiS2FnYXlhIFVidXlhc2hpa2kiLCJyYW5rIjoiQ29ycHMgTGVhZGVyIiwiZXhwZXJpZW5jZSI6NTAwMCwiYnJlYXRoaW5nU3R5bGUiOiJOb25lIiwia2lsbENvdW50IjoxMDAwLCJtaXNzaW9uc0NvbXBsZXRlZCI6MTAwLCJzdGF0dXMiOiJBY3RpdmUiLCJfaWQiOiI2OGJkYjkzODEzZTdkMjI4ZDJkYjQwNTcifV0sImlhdCI6MTc1NzMzNDk2MX0.Fbs1Qarh1eNFu3kTxOC0ITMW22SGP-7IAdIaSXSyjGs
+
+
+{
+  "status": "Dead"
+}
+
+### Create Mission 
+POST https://dsc-managementsystem.onrender.com/missions
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjEsInVzZXJuYW1lIjoiY29ycHNMZWFkZXIiLCJyb2xlIjoiYWRtaW4iLCJwcm9maWxlIjpbeyJuYW1lIjoiS2FnYXlhIFVidXlhc2hpa2kiLCJyYW5rIjoiQ29ycHMgTGVhZGVyIiwiZXhwZXJpZW5jZSI6NTAwMCwiYnJlYXRoaW5nU3R5bGUiOiJOb25lIiwia2lsbENvdW50IjoxMDAwLCJtaXNzaW9uc0NvbXBsZXRlZCI6MTAwLCJzdGF0dXMiOiJBY3RpdmUiLCJfaWQiOiI2OGJkYjkzODEzZTdkMjI4ZDJkYjQwNTcifV0sImlhdCI6MTc1NzMzNDk2MX0.Fbs1Qarh1eNFu3kTxOC0ITMW22SGP-7IAdIaSXSyjGs
+Content-Type: application/json
+
+{
+  "title": "Eliminate Doma",
+  "description": "Upper Moon Two must be taken down to weaken Muzan's forces.",
+  "difficulty": "Hashira Mission",
+  "status": "pending",
+  "assignedTo": "himejima",
+  "targetDemon": "Hunt Doma",
+  "demonID": "d3",
+  "expReward": 650000
+}
+
+# Get Missions
+GET https://dsc-managementsystem.onrender.com/missions
+
+# Update Mission status to in-progress
+PATCH https://dsc-managementsystem.onrender.com/missions/m3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjEsInVzZXJuYW1lIjoiY29ycHNMZWFkZXIiLCJyb2xlIjoiYWRtaW4iLCJwcm9maWxlIjpbeyJuYW1lIjoiS2FnYXlhIFVidXlhc2hpa2kiLCJyYW5rIjoiQ29ycHMgTGVhZGVyIiwiZXhwZXJpZW5jZSI6NTAwMCwiYnJlYXRoaW5nU3R5bGUiOiJOb25lIiwia2lsbENvdW50IjoxMDAwLCJtaXNzaW9uc0NvbXBsZXRlZCI6MTAwLCJzdGF0dXMiOiJBY3RpdmUiLCJfaWQiOiI2OGJkNzVhOGVmMTk5ZmE5M2NiNjZjZDQifV0sImlhdCI6MTc1NzI0NzI5N30.It-c6HrdfhjKD-6GsJiWTW0UmH7HQ45PbR6E7CfwTGo
+Content-Type: application/json
+
+{
+  "expReward": 1000000
+}
+
+
+### CREATE a report (admin only)
+POST https://dsc-managementsystem.onrender.com/reports
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjEsInVzZXJuYW1lIjoiY29ycHNMZWFkZXIiLCJyb2xlIjoiYWRtaW4iLCJwcm9maWxlIjpbeyJuYW1lIjoiS2FnYXlhIFVidXlhc2hpa2kiLCJyYW5rIjoiQ29ycHMgTGVhZGVyIiwiZXhwZXJpZW5jZSI6NTAwMCwiYnJlYXRoaW5nU3R5bGUiOiJOb25lIiwia2lsbENvdW50IjoxMDAwLCJtaXNzaW9uc0NvbXBsZXRlZCI6MTAwLCJzdGF0dXMiOiJBY3RpdmUiLCJfaWQiOiI2OGJkYjkzODEzZTdkMjI4ZDJkYjQwNTcifV0sImlhdCI6MTc1NzI2NDM0M30.sYQyEuNr-qMSuVhiTmiyRSAdnJM8uzUq94ls5U3IJd4
+Content-Type: application/json
+
+{
+  "reportTitle": "Hunting Doma",
+  "userID": 3,
+  "content": "An attempt was made to eliminate the Upper Moon demon Doma, but the mission failed due to his overwhelming ice abilities.",
+  "status": "closed",
+  "notes": "Several Slayers were injured. A retreat was ordered after sustaining heavy casualties.",
+  "result": "Failure"
+}
+
+### GET all reports (public)
+GET https://dsc-managementsystem.onrender.com/reports
+
+### UPDATE a report by ID (user or admin)
+PATCH https://dsc-managementsystem.onrender.com/reports/r1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjIsInVzZXJuYW1lIjoiaGltZWppbWEiLCJyb2xlIjoidXNlciIsInByb2ZpbGUiOlt7Im5hbWUiOiJHeW9tZWkgSGltZWppbWEiLCJyYW5rIjoiSGFzaGlyYSAtIEVsaXRlIiwiZXhwZXJpZW5jZSI6NDAwMCwiYnJlYXRoaW5nU3R5bGUiOiJTdG9uZSBCcmVhdGhpbmciLCJraWxsQ291bnQiOjkwMCwibWlzc2lvbnNDb21wbGV0ZWQiOjkwLCJzdGF0dXMiOiJBY3RpdmUiLCJfaWQiOiI2OGJkNzVhY2VmMTk5ZmE5M2NiNjZjZDkifV0sImlhdCI6MTc1NzI0OTIyN30.Laao10eQhBslUEQKTFhyBiEgzsznZSmTjzNQHstoF7w
+Content-Type: application/json
+
+{
+  "status": "missionUpdate",
+  "content": "The threat has been eliminated by the Hashira."
+}

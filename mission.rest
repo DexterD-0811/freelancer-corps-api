@@ -1,0 +1,77 @@
+# Create Mission - assigned to Demon Slayer userID 1, target Demon d1 (Kibutsuji Muzan)
+POST http://localhost:3000/missions
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjEsInVzZXJuYW1lIjoiY29ycHNMZWFkZXIiLCJyb2xlIjoiYWRtaW4iLCJwcm9maWxlIjpbeyJuYW1lIjoiS2FnYXlhIFVidXlhc2hpa2kiLCJyYW5rIjoiQ29ycHMgTGVhZGVyIiwiZXhwZXJpZW5jZSI6NTAwMCwiYnJlYXRoaW5nU3R5bGUiOiJOb25lIiwia2lsbENvdW50IjoxMDAwLCJtaXNzaW9uc0NvbXBsZXRlZCI6MTAwLCJzdGF0dXMiOiJBY3RpdmUiLCJfaWQiOiI2OGJkYjkzODEzZTdkMjI4ZDJkYjQwNTcifV0sImlhdCI6MTc1NzI2NDM0M30.sYQyEuNr-qMSuVhiTmiyRSAdnJM8uzUq94ls5U3IJd4
+Content-Type: application/json
+
+{
+  "title": "Eliminate Kokushibo",
+  "description": "Upper Moon One must be eliminated before the final battle.",
+  "difficulty": "Hashira Mission",
+  "status": "pending",
+  "assignedTo": "himejima",                
+  "targetDemon": "Hunt Kokushibo",
+  "demonID": "d2",
+  "expReward": 781000   
+}
+
+###
+
+# Create Mission - assigned to Demon Slayer userID 3, target Demon d2 (Kokushibo)
+POST http://localhost:10000/missions
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjEsInVzZXJuYW1lIjoiY29ycHNMZWFkZXIiLCJyb2xlIjoiYWRtaW4iLCJwcm9maWxlIjpbeyJuYW1lIjoiS2FnYXlhIFVidXlhc2hpa2kiLCJyYW5rIjoiQ29ycHMgTGVhZGVyIiwiZXhwZXJpZW5jZSI6NTAwMCwiYnJlYXRoaW5nU3R5bGUiOiJOb25lIiwia2lsbENvdW50IjoxMDAwLCJtaXNzaW9uc0NvbXBsZXRlZCI6MTAwLCJzdGF0dXMiOiJBY3RpdmUiLCJfaWQiOiI2OGJkYjkzODEzZTdkMjI4ZDJkYjQwNTcifV0sImlhdCI6MTc1NzMyMzU0MH0.jtp3bAOTzcgtjhGPJqWFftyxqHyUAPhYq3uyacX8_KA
+Content-Type: application/json
+
+{
+  "title": "Hunt Kibutsuji Muzan",
+  "description": "Eliminate the Demon King Kibutsuji Muzan, the source of all demons.",
+  "difficulty": "Suicide Mission",
+  "status": "pending",
+  "assignedTo": "himejima",                 
+  "targetDemon": "Kibutsuji Muzan",
+  "demonID": "d1",
+  "expReward": 1000000            
+}
+
+###
+
+#Create a Mission
+POST http://localhost:3000/missions
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjEsInVzZXJuYW1lIjoiY29ycHNMZWFkZXIiLCJyb2xlIjoiYWRtaW4iLCJwcm9maWxlIjpbeyJuYW1lIjoiS2FnYXlhIFVidXlhc2hpa2kiLCJyYW5rIjoiQ29ycHMgTGVhZGVyIiwiZXhwZXJpZW5jZSI6NTAwMCwiYnJlYXRoaW5nU3R5bGUiOiJOb25lIiwia2lsbENvdW50IjoxMDAwLCJtaXNzaW9uc0NvbXBsZXRlZCI6MTAwLCJzdGF0dXMiOiJBY3RpdmUiLCJfaWQiOiI2OGJkYjkzODEzZTdkMjI4ZDJkYjQwNTcifV0sImlhdCI6MTc1NzI2NDM0M30.sYQyEuNr-qMSuVhiTmiyRSAdnJM8uzUq94ls5U3IJd4
+Content-Type: application/json
+
+{
+  "title": "Hunt Upper Moon 2 Doma",
+  "description": "Eliminate Upper Moon 2, the 2nd strongest demon Doma.",
+  "difficulty": "Hashira Mission",
+  "status": "pending",
+  "assignedTo": "giyuTomioka",
+  "targetDemon": "Doma",
+  "demonID": "d3",
+  "expReward": 700000
+}
+
+###
+
+# Get Mission by ID
+GET http://localhost:3000/missions/m3
+
+###
+
+# Get Missions
+GET http://localhost:3000/missions
+
+###
+
+# Update Mission status to in-progress
+PATCH http://localhost:3000/missions/m3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjEsInVzZXJuYW1lIjoiY29ycHNMZWFkZXIiLCJyb2xlIjoiYWRtaW4iLCJwcm9maWxlIjpbeyJuYW1lIjoiS2FnYXlhIFVidXlhc2hpa2kiLCJyYW5rIjoiQ29ycHMgTGVhZGVyIiwiZXhwZXJpZW5jZSI6NTAwMCwiYnJlYXRoaW5nU3R5bGUiOiJOb25lIiwia2lsbENvdW50IjoxMDAwLCJtaXNzaW9uc0NvbXBsZXRlZCI6MTAwLCJzdGF0dXMiOiJBY3RpdmUiLCJfaWQiOiI2OGJkNzVhOGVmMTk5ZmE5M2NiNjZjZDQifV0sImlhdCI6MTc1NzI0NzI5N30.It-c6HrdfhjKD-6GsJiWTW0UmH7HQ45PbR6E7CfwTGo
+Content-Type: application/json
+
+{
+  "expReward": 1000000
+}
+
+###
+
+# Delete Mission
+DELETE http://localhost:3000/missions/m4

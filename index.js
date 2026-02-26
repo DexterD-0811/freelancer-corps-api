@@ -13,11 +13,10 @@ import { swaggerUi, swaggerSpec } from './modules/swagger/swagger.js';
 
 
 dotenv.config();
-console.log('DB_URI:', process.env.DB_URI);
 
 
 const app = express();
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT ?? 3000;
 
 try {
   await mongoose.connect(process.env.DB_URI);

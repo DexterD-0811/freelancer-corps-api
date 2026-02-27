@@ -1,6 +1,6 @@
 import express from 'express';
 import { createUser, 
-  createUserbyAdmin
+  createUserbyAdmin,
   getAllUsers, 
   getUserByID, 
   deleteUser, 

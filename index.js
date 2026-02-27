@@ -1,4 +1,4 @@
-import bodyParser from 'body-parser';
+
 import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
@@ -25,7 +25,8 @@ try {
   console.error('Unable to connect to database', error);
 }
 
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(helmet());
 app.set('port', PORT);

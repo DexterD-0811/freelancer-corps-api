@@ -1,5 +1,6 @@
 import express from 'express';
 import { createUser, 
+  createUserbyAdmin
   getAllUsers, 
   getUserByID, 
   deleteUser, 
@@ -17,6 +18,7 @@ import { validateNewUser  } from './middleware.js';
 
 const router = express.Router();
 
+router.post('/admin/register', verifyToken, authorizeAdmin, validateNewUser, createUserbyAdmin);
 router.post('/register', validateNewUser, createUser);
 router.get('/', verifyToken, authorizeAdmin, getAllUsers);
 router.get('/profile', getAllProfiles);

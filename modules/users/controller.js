@@ -2,17 +2,51 @@ import { User } from './model.js';
 import { Mission } from '../missions/model.js';
 import bcrypt from 'bcrypt';
 
-// CREATE A USER
-export async function createUser(req, res) {
+// CREATE ADMIN
+export async function createUserbyAdmin(req, res) {
   try {
-    const { username, password, role, profile } = req.body;
+    const { username, password, profile } = req.body;
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({
       username,
       password: hashedPassword,
-      role,
+      role: 'admin' || 'user',
+      profile,
+    });
+
+    await newUser.save();
+
+    res.status(201).json({
+      message: `${newUser.username} created successfully.`,
+      user: {
+        userID: newUser.userID,
+        username: newUser.username,
+        role: newUser.role,
+        profile: newUser.profile,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ 
+      error: 'Server error' 
+    });
+  }
+}
+
+
+// CREATE A USER
+export async function createUser(req, res) {
+  try {
+    const { username, password, profile } = req.body;
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = new User({
+      username,
+      password: hashedPassword,
+      role: 'user',
       profile,
     });
 
